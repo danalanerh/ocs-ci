@@ -8,6 +8,7 @@ import os
 import shutil
 import traceback
 from subprocess import Popen, PIPE
+import time
 
 import boto3
 from botocore.exceptions import ClientError
@@ -533,6 +534,7 @@ class AWSUPI(AWSBase):
                 IamInstanceProfile=self.worker_iam_role,
                 InstanceId=inst_id,
             )
+            time.sleep(25)
 
     def run_ansible_playbook(self):
         """
